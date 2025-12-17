@@ -1,0 +1,116 @@
+{
+  "version": "1.0.0",
+  "description": "Règles d'analyse des blocs Gutenberg pour le diagnostic",
+  "last_updated": "2025-09-12",
+  "rules": [
+    {
+      "id": "missing_unregistered",
+      "priority": 1,
+      "description": "Bloc manquant et non enregistré",
+      "conditions": {
+        "api_status": ["missing"],
+        "is_registered": false
+      },
+      "result": {
+        "type": "BLOCK_CONVERT_TO_HTML",
+        "severity": "high",
+        "message": "Votre site n'est pas compatible avec le bloc « {block_name} »",
+        "suggestion": "Vous pouvez le laisser tel quel, le convertir en HTML personnalisé ou le supprimer. Option : Conserver en HTML",
+        "action_recommended": "convert_to_html"
+      }
+    },
+    {
+      "id": "recovery_mode",
+      "priority": 2,
+      "description": "Bloc en mode récupération",
+      "conditions": {
+        "api_status": ["recovery_mode"]
+      },
+      "result": {
+        "type": "BLOCK_RECOVERY_MODE",
+        "severity": "medium",
+        "message": "Bloc en mode tentative de récupération : {block_name}",
+        "suggestion": "Le bloc contient du contenu invalide ou inattendu. Option : Tentative de récupération",
+        "action_recommended": "attempt_recovery"
+      }
+    },
+    {
+      "id": "invalid_registered",
+      "priority": 3,
+      "description": "Bloc enregistré mais invalide",
+      "conditions": {
+        "api_status": ["invalid"]
+      },
+      "result": {
+        "type": "BLOCK_CONVERT_TO_HTML",
+        "severity": "high",
+        "message": "Bloc incompatible avec la version actuelle : {block_name}",
+        "suggestion": "Le contenu du bloc ne correspond pas à la définition actuelle. Option : Convertir en HTML",
+        "action_recommended": "convert_to_html"
+      }
+    },
+    {
+      "id": "error_registered",
+      "priority": 4,
+      "description": "Bloc enregistré avec erreur",
+      "conditions": {
+        "is_registered": true,
+        "api_status": ["error"]
+      },
+      "result": {
+        "type": "BLOCK_RECOVERY_MODE",
+        "severity": "medium",
+        "message": "Bloc en mode tentative de récupération : {block_name}",
+        "suggestion": "Le bloc contient du contenu invalide ou inattendu. Option : Tentative de récupération",
+        "action_recommended": "attempt_recovery"
+      }
+    },
+    {
+      "id": "api_missing_registered",
+      "priority": 5,
+      "description": "API manquante mais bloc enregistré",
+      "conditions": {
+        "api_status": ["missing"],
+        "is_registered": true
+      },
+      "result": {
+        "type": "BLOCK_RECOVERY_MODE",
+        "severity": "medium",
+        "message": "Bloc disponible mais non détecté par l'API : {block_name}",
+        "suggestion": "Le bloc est enregistré mais l'API ne peut pas le charger. Option : Tentative de récupération",
+        "action_recommended": "attempt_recovery"
+      }
+    }
+  ],
+  "conditions_schema": {
+    "api_status": {
+      "type": "array",
+      "description": "Statuts API possibles",
+      "allowed_values": ["missing", "recovery_mode", "invalid", "error", "valid"]
+    },
+    "is_registered": {
+      "type": "boolean",
+      "description": "Si le bloc est enregistré dans WordPress"
+    }
+  },
+  "result_schema": {
+    "type": {
+      "description": "Type d'issue détectée",
+      "allowed_values": ["BLOCK_CONVERT_TO_HTML", "BLOCK_RECOVERY_MODE", "BLOCK_MISSING", "BLOCK_ERROR"]
+    },
+    "severity": {
+      "description": "Niveau de gravité",
+      "allowed_values": ["low", "medium", "high", "critical"]
+    },
+    "message": {
+      "description": "Message affiché à l'utilisateur (peut contenir {block_name})"
+    },
+    "suggestion": {
+      "description": "Suggestion de résolution"
+    },
+    "action_recommended": {
+      "description": "Action recommandée",
+      "allowed_values": ["convert_to_html", "attempt_recovery", "remove_block", "update_plugin"]
+    }
+  }
+}

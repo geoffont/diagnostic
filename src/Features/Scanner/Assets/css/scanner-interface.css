@@ -1,0 +1,815 @@
+/**
+ * Styles pour l'interface Scanner de blocs Gutenberg
+ *
+ * Ce fichier contient tous les styles CSS pour l'interface du Scanner,
+ * incluant la mise en page, les boutons, la pagination, les tableaux de résultats
+ * et les styles de feedback utilisateur. Optimisé pour l'interface d'administration WordPress.
+ *
+ * @file        scanner-interface.css
+ * @package     Company\Diagnostic\Features\Scanner
+ * @author      Geoffroy Fontaine
+ * @copyright   2025 Company
+ * @license     GPL-2.0+
+ * @version     1.0.0
+ * @since       1.0.0
+ * @created     2025-09-11
+ * @modified    2025-09-11
+ *
+ * @responsibilities:
+ * - Styles de l'interface Scanner
+ * - Mise en page responsive
+ * - Styles de pagination
+ * - Tableaux de résultats
+ * - États de chargement et feedback
+ * - Intégration avec l'admin WordPress
+ *
+ * @dependencies:
+ * - WordPress admin styles
+ * - CSS Grid et Flexbox
+ * - CSS modernes (compatibilité navigateurs récents)
+ *
+ * @related_files:
+ * - scanner-interface.js (interactions JavaScript)
+ * - ../UI/Screens/ScannerScreen.php (structure HTML)
+ * - Feature.php (chargement des assets)
+ *
+ * @sections:
+ * 1. Layout général et containers
+ * 2. Boutons et contrôles
+ * 3. Tableaux et résultats
+ * 4. Pagination
+ * 5. États et feedback
+ * 6. Responsive design
+ */
+
+/* ============================================================================
+   1. LAYOUT GÉNÉRAL ET CONTAINERS
+   ========================================================================== */
+
+/* Forcer la largeur complète pour la page Scanner Validator */
+.diagnostic-scanner-wrap {
+  margin-right: 10px;
+}
+
+.diagnostic-scanner-card {
+  background: #fff;
+  padding: 20px;
+  margin: 20px 0;
+  border: 1px solid #ddd;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles pour les badges d'issues */
+.scanner-issue-badge {
+  display: inline-block;
+  padding: 2px 6px;
+  margin: 1px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.scanner-results-summary ul,
+.scanner-results-issues ul {
+  list-style: none;
+  padding: 0;
+}
+
+.scanner-results-summary li,
+.scanner-results-issues li {
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.scanner-results-summary {
+  margin-bottom: 15px;
+}
+
+.scanner-results-issues {
+  margin-bottom: 15px;
+  max-height: auto;
+  overflow-y: auto;
+}
+
+.scanner-results-summary h3,
+.scanner-results-issues h3 {
+  margin: 0 0 10px 0;
+  font-size: 16px;
+}
+
+/* Améliorer l'affichage des résultats */
+#scanner-results {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px; /* Espace pour éviter le chevauchement avec le footer */
+}
+
+#scanner-results-content {
+  width: 100%;
+  max-width: auto;
+  overflow-x: auto;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  /* Permettre l'expansion naturelle du contenu */
+}
+
+/* Styles pour la div scanner-results-raw */
+.scanner-results-raw {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  /* Supprimer la limitation de hauteur pour voir tout le contenu */
+}
+
+.scanner-results-raw h3 {
+  margin: 0 0 15px 0;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #007cba;
+  color: #1d2327;
+}
+
+/* Styles pour les tableaux de résultats */
+.diagnostic-scanner-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 15px 0;
+  background: #fff;
+  border: 1px solid #ddd;
+}
+
+.diagnostic-scanner-table th {
+  background: #f7f7f7;
+  padding: 12px;
+  text-align: left;
+  border-bottom: 2px solid #ddd;
+  font-weight: bold;
+  color: #333;
+}
+
+.diagnostic-scanner-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.diagnostic-scanner-table tr:hover {
+  background: #f9f9f9;
+}
+
+.diagnostic-scanner-table tr:nth-child(even) {
+  background: #fafafa;
+}
+
+.diagnostic-scanner-table tr:nth-child(even):hover {
+  background: #f5f5f5;
+}
+
+/* Style pour la colonne des problèmes */
+.scanner-issues-cell {
+  max-width: 400px;
+}
+
+/* Liens d'édition des posts */
+.scanner-post-edit-link {
+  color: #0073aa;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s ease;
+}
+
+.scanner-post-edit-link:hover {
+  color: #005177;
+  text-decoration: underline;
+}
+
+.scanner-edit-icon {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.scanner-post-edit-link:hover .scanner-edit-icon {
+  opacity: 1;
+}
+
+.scanner-issue-badge {
+  display: inline-block;
+  color: rgb(0, 0, 0);
+  padding: 3px 8px;
+  margin: 2px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 1.3;
+}
+
+/* Responsive design */
+@media (max-width: 782px) {
+  .diagnostic-scanner-wrap {
+    padding: 10px;
+  }
+
+  .diagnostic-scanner-card {
+    padding: 15px;
+    margin: 15px 0;
+  }
+
+  #scanner-results-content {
+    font-size: 12px;
+    padding: 15px;
+  }
+
+  .diagnostic-scanner-table {
+    font-size: 12px;
+  }
+  
+  .diagnostic-scanner-table th,
+  .diagnostic-scanner-table td {
+    padding: 8px;
+  }
+  
+  .scanner-issues-cell {
+    max-width: 200px;
+  }
+  
+  .scanner-issue-badge {
+    display: block;
+    margin: 2px 0;
+  }
+
+  .scanner-post-edit-link {
+    font-size: 12px;
+  }
+
+  .scanner-edit-icon {
+    font-size: 10px;
+  }
+}
+
+/* Pagination */
+.scanner-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  padding: 15px;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.scanner-pagination-info {
+  font-size: 14px;
+  color: #666;
+}
+
+.scanner-pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.scanner-pagination-btn {
+  background: #0073aa;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background-color 0.2s ease;
+}
+
+.scanner-pagination-btn:hover:not(:disabled) {
+  background: #005177;
+}
+
+.scanner-pagination-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.scanner-pagination-pages {
+  font-weight: bold;
+  color: #333;
+  padding: 0 10px;
+}
+
+/* Responsive pagination */
+@media (max-width: 782px) {
+  .scanner-pagination {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+  
+  .scanner-pagination-controls {
+    gap: 10px;
+  }
+  
+  .scanner-pagination-btn {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+}
+
+/* ============================================================================
+   STYLES POUR LES RÉSULTATS DU SCAN NATIF
+   ========================================================================== */
+
+.scanner-results-native {
+  width: 100%;
+}
+
+.scanner-stats {
+  background: #f0f6fc;
+  padding: 20px;
+  border-left: 4px solid #0073aa;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+.scanner-stats h2 {
+  margin-top: 0;
+  color: #1d2327;
+  font-size: 20px;
+}
+
+.scanner-stats p {
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+.scanner-stats strong {
+  color: #1d2327;
+  font-weight: 600;
+}
+
+.scanner-by-type {
+  background: #fff;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.scanner-by-type h3 {
+  margin-top: 0;
+  font-size: 16px;
+  color: #1d2327;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.type-stats {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.type-stats:last-child {
+  border-bottom: none;
+}
+
+.scanner-posts-list {
+  margin-top: 20px;
+}
+
+.scanner-posts-list h3 {
+  font-size: 18px;
+  color: #1d2327;
+  margin-bottom: 15px;
+}
+
+.scanner-posts-list table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.scanner-posts-list th {
+  background: #f7f7f7;
+  padding: 12px;
+  text-align: left;
+  border-bottom: 2px solid #ddd;
+  font-weight: 600;
+}
+
+.scanner-posts-list td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  vertical-align: middle;
+}
+
+.scanner-posts-list tr:hover {
+  background: #f9f9f9;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge-error {
+  background: #dc3232;
+  color: white;
+}
+
+.post-details {
+  background: #fafafa;
+}
+
+.post-details td {
+  padding: 20px !important;
+}
+
+.block-details {
+  max-width: 100%;
+}
+
+.block-details h4 {
+  margin-top: 0;
+  color: #1d2327;
+  font-size: 16px;
+  border-bottom: 2px solid #0073aa;
+  padding-bottom: 10px;
+}
+
+.invalid-block {
+  background: #fff;
+  border-left: 4px solid #dc3232;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+}
+
+.invalid-block p {
+  margin: 8px 0;
+  font-size: 13px;
+}
+
+.invalid-block strong {
+  color: #1d2327;
+  font-weight: 600;
+}
+
+.recovery-suggestions {
+  background: #f0f6fc;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 4px;
+  border-left: 3px solid #0073aa;
+}
+
+.recovery-suggestions p {
+  margin: 0 0 8px 0;
+  font-weight: 600;
+  color: #1d2327;
+}
+
+.recovery-suggestions ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.recovery-suggestions li {
+  margin: 5px 0;
+  font-size: 13px;
+}
+
+.recovery-suggestions em {
+  color: #666;
+  font-size: 12px;
+}
+
+.scanner-no-issues {
+  background: #d7f0d7;
+  border-left: 4px solid #46b450;
+  padding: 20px;
+  text-align: center;
+  border-radius: 4px;
+  margin: 20px 0;
+}
+
+.scanner-no-issues p {
+  margin: 0;
+  font-size: 16px;
+  color: #1d2327;
+}
+
+.scanner-errors {
+  background: #fef7f1;
+  border-left: 4px solid #f56e28;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+
+.scanner-errors h3 {
+  margin-top: 0;
+  color: #1d2327;
+  font-size: 16px;
+}
+
+.scanner-errors ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.scanner-errors li {
+  margin: 8px 0;
+  font-size: 13px;
+}
+
+/* Boutons d'actions */
+.view-details {
+  background: #0073aa;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 13px;
+  margin-left: 5px;
+}
+
+.view-details:hover {
+  background: #005177;
+}
+
+/* Responsive pour les résultats natifs */
+@media (max-width: 782px) {
+  .scanner-stats,
+  .scanner-by-type,
+  .invalid-block,
+  .recovery-suggestions {
+    padding: 12px;
+  }
+
+  .scanner-posts-list table {
+    font-size: 12px;
+  }
+
+  .scanner-posts-list th,
+  .scanner-posts-list td {
+    padding: 8px;
+  }
+
+  .block-details h4 {
+    font-size: 14px;
+  }
+
+  .invalid-block p,
+  .recovery-suggestions li {
+    font-size: 12px;
+  }
+}
+
+/* ============================================================================
+   STYLES POUR LA VALIDATION JAVASCRIPT
+   ========================================================================== */
+
+/* Modal de progression */
+#js-validation-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  z-index: 99999;
+  width: 50%;
+}
+
+#js-validation-modal h2 {
+  margin-top: 0;
+}
+
+#js-validation-modal .progress-container {
+  width: 100%;
+  height: 20px;
+  background: #f0f0f0;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 20px 0;
+}
+
+#js-validation-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #0073aa, #00a0d2);
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+#js-validation-modal .progress-note {
+  color: #666;
+  font-size: 0.9em;
+}
+
+#js-validation-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99998;
+}
+
+/* Cache performance */
+.scanner-cache-performance {
+  background: #d4edda;
+  border-left: 4px solid #28a745;
+  padding: 12px;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+
+.scanner-cache-performance h3 {
+  margin-top: 0;
+}
+
+.scanner-cache-performance p {
+  margin-bottom: 8px;
+}
+
+.scanner-cache-performance .time-saved {
+  margin-bottom: 0;
+  font-size: 0.9em;
+  color: #155724;
+}
+
+/* Backup info - Succès */
+.scanner-backup-info {
+  padding: 12px;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+
+.scanner-backup-info.backup-success {
+  background: #cce5ff;
+  border-left: 4px solid #0073aa;
+}
+
+.scanner-backup-info.backup-error {
+  background: #ffeaa7;
+  border-left: 4px solid #fdcb6e;
+}
+
+.scanner-backup-info.backup-none {
+  background: #d4edda;
+  border-left: 4px solid #27ae60;
+}
+
+.scanner-backup-info h3 {
+  margin-top: 0;
+}
+
+.scanner-backup-info ul {
+  margin-bottom: 10px;
+}
+
+.scanner-backup-info p {
+  margin-bottom: 0;
+}
+
+.scanner-backup-info .backup-note {
+  font-style: italic;
+  color: #666;
+}
+
+/* Block recovery notice */
+.scanner-block-recovery-notice {
+  background: #fff3cd;
+  border: 1px solid #ffc107;
+  border-radius: 4px;
+  padding: 15px;
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.scanner-block-recovery-notice p {
+  margin: 5px 0 0 0;
+}
+
+.scanner-block-recovery-notice .button-primary {
+  margin-left: 20px;
+}
+
+/* Issue item */
+.scanner-issue-item {
+  margin-bottom: 8px;
+}
+
+.scanner-issue-item .issue-badge {
+  display: inline-block;
+  background: #fcf0f1;
+  border-left: 3px solid #d63638;
+  padding: 4px 8px;
+  border-radius: 2px;
+}
+
+.scanner-issue-item .issue-badge small {
+  color: #d63638;
+}
+
+/* Résumé des résultats */
+.scanner-summary-success {
+  background: #d4edda;
+  border-left: 4px solid #28a745;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.scanner-summary-warning {
+  background: #fff3cd;
+  border-left: 4px solid #ffc107;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+/* Responsive pour la validation JS */
+@media (max-width: 782px) {
+  #js-validation-modal {
+    min-width: 300px;
+    padding: 20px;
+  }
+
+  .scanner-block-recovery-notice {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .scanner-block-recovery-notice .button-primary {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+/* ============================================================================
+   STYLES ADDITIONNELS POUR SCANNERSCREEN.PHP
+   ========================================================================== */
+
+/* Actions et boutons */
+.scanner-actions {
+  margin-bottom: 20px;
+}
+
+#scanner-progress {
+  display: none;
+}
+
+#progress-bar {
+  width: 100%;
+  height: 20px;
+}
+
+/* Résultats initialement cachés */
+#scanner-results.hidden {
+  display: none;
+}
+
+#scanner-results.visible {
+  display: block;
+}
+
+/* Notice info */
+.scanner-info-notice {
+  background: #f0f8ff;
+  border-left: 4px solid #0073aa;
+  padding: 12px;
+  margin: 20px 0;
+}
+
+/* Sections */
+.scanner-section-spacing {
+  margin-top: 20px;
+}
+
+.scanner-section-divider {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+}
+
+/* Texte coloré pour les statistiques */
+.stat-error {
+  color: #dc3232;
+}

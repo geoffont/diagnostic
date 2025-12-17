@@ -1,0 +1,351 @@
+/**
+ * Styles pour l'interface PostGenerator
+ *
+ * Ce fichier contient tous les styles CSS pour l'interface du générateur de posts,
+ * incluant les formulaires de configuration, les cartes d'information, la mise en page
+ * et les animations. Conçu pour s'intégrer harmonieusement avec l'admin WordPress.
+ *
+ * @file        post-generator.css
+ * @package     Company\Diagnostic\Features\PostGenerator
+ * @author      Geoffroy Fontaine
+ * @copyright   2025 Company
+ * @license     GPL-2.0+
+ * @version     1.0.0
+ * @since       1.0.0
+ * @created     2025-09-11
+ * @modified    2025-09-11
+ *
+ * @responsibilities:
+ * - Styles de l'interface PostGenerator
+ * - Formulaires de configuration
+ * - Cards et sections d'information
+ * - Layouts responsive
+ * - Animations et transitions
+ * - Intégration admin WordPress
+ *
+ * @dependencies:
+ * - WordPress admin styles
+ * - CSS Grid et Flexbox
+ * - CSS3 animations et transitions
+ *
+ * @related_files:
+ * - post-generator.js (interactions JavaScript)
+ * - ../UI/Screens/PostGeneratorScreen.php (structure HTML)
+ * - Feature.php (chargement des assets)
+ *
+ * @sections:
+ * 1. Variables et utilitaires
+ * 2. Layout principal
+ * 3. Formulaires et contrôles
+ * 4. Cards et sections
+ * 5. Animations et états
+ * 6. Responsive design
+ */
+
+/* ============================================================================
+   1. VARIABLES ET LAYOUT PRINCIPAL
+   ========================================================================== */
+
+.diagnostic-post-generator {
+    max-width: 1200px;
+}
+
+.diagnostic-post-generator .card {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.diagnostic-post-generator .card h2 {
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #dcdcde;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* ===================================
+   Grille de statistiques
+   =================================== */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 20px;
+    background: #f6f7f7;
+    border-radius: 6px;
+    border-left: 4px solid #0073aa;
+}
+
+.stat-number {
+    display: block;
+    font-size: 32px;
+    font-weight: bold;
+    color: #0073aa;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    display: block;
+    font-size: 14px;
+    color: #646970;
+    font-weight: 500;
+}
+
+.stats-breakdown {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #dcdcde;
+}
+
+.stats-breakdown h4 {
+    margin-bottom: 10px;
+    color: #1d2327;
+}
+
+.stats-breakdown ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.stats-breakdown li {
+    margin-bottom: 5px;
+    color: #646970;
+}
+
+/* ===================================
+   Formulaire de génération
+   =================================== */
+
+.generation-form .form-table th {
+    width: 200px;
+    vertical-align: top;
+    padding-top: 15px;
+}
+
+.generation-form .form-table td {
+    padding-bottom: 20px;
+}
+
+.generation-form select,
+.generation-form input[type="number"] {
+    min-width: 200px;
+}
+
+.generation-form fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.generation-form fieldset label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: normal;
+}
+
+.generation-form fieldset input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.generation-form .description {
+    margin-top: 5px !important;
+    font-style: italic;
+}
+
+/* ===================================
+   Actions rapides
+   =================================== */
+
+.quick-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.quick-actions .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* ===================================
+   Messages et notifications
+   =================================== */
+
+.warning {
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: 4px;
+    padding: 12px 15px;
+    color: #856404;
+    margin: 15px 0;
+}
+
+.warning strong {
+    color: #721c24;
+}
+
+/* ===================================
+   Formulaire de nettoyage
+   =================================== */
+
+.cleanup-form {
+    background: #fef7f7;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    padding: 20px;
+    margin-top: 15px;
+}
+
+.cleanup-form .button-delete {
+    background: #dc3545;
+    border-color: #dc3545;
+    color: #fff;
+}
+
+.cleanup-form .button-delete:hover {
+    background: #c82333;
+    border-color: #bd2130;
+}
+
+/* ===================================
+   Responsive design
+   =================================== */
+
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .quick-actions {
+        flex-direction: column;
+    }
+    
+    .quick-actions .button {
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .generation-form .form-table th,
+    .generation-form .form-table td {
+        display: block;
+        width: 100%;
+        padding: 10px 0;
+    }
+    
+    .generation-form .form-table th {
+        border-bottom: none;
+        font-weight: 600;
+    }
+}
+
+/* ===================================
+   États de chargement
+   =================================== */
+
+.diagnostic-post-generator .loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.diagnostic-post-generator .loading::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #0073aa;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ===================================
+   Améliorations visuelles
+   =================================== */
+
+.diagnostic-post-generator .card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.2s ease;
+}
+
+.stat-item:hover {
+    background: #f0f6fc;
+    transition: background-color 0.2s ease;
+}
+
+.generation-form .button-primary {
+    background: #0073aa;
+    border-color: #0073aa;
+    text-shadow: none;
+    box-shadow: none;
+    padding: 8px 16px;
+    font-weight: 500;
+}
+
+.generation-form .button-primary:hover {
+    background: #005a87;
+    border-color: #005a87;
+}
+
+/* ===================================
+   Icônes et emojis
+   =================================== */
+
+.diagnostic-post-generator h2 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.diagnostic-post-generator .emoji {
+    font-size: 20px;
+    line-height: 1;
+}
+
+/* ===================================
+   Accessibilité
+   =================================== */
+
+.diagnostic-post-generator .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.diagnostic-post-generator .button:focus {
+    outline: 2px solid #0073aa;
+    outline-offset: 2px;
+}
+
+.diagnostic-post-generator input:focus,
+.diagnostic-post-generator select:focus {
+    border-color: #0073aa;
+    box-shadow: 0 0 0 1px #0073aa;
+}
