@@ -1,21 +1,21 @@
 <?php
 
 /**
- * Autoloader PSR-4 pour le plugin Diagnostic
+ * Autoloader PSR-4 pour le plugin Gutenberg Recovery
  *
  * Ce fichier implémente un système d'autoloading PSR-4 personnalisé
  * pour charger automatiquement les classes du plugin selon leur namespace.
  * Il permet d'éviter les require/include manuels et suit les standards
  * modernes de chargement de classes PHP.
  *
- * @package     Company\Diagnostic
+ * @package     Company\GutenbergRecovery
  * @author      Geoffroy Fontaine
  * @copyright   2025 Company
  * @license     GPL-2.0+
- * @version     1.0.0
+ * @version     2.0.0
  * @since       1.0.0
  * @created     2025-09-11
- * @modified    2025-09-11
+ * @modified    2025-12-19
  *
  * @responsibilities:
  * - Chargement automatique des classes PSR-4
@@ -29,19 +29,19 @@
  * - Structure PSR-4 du plugin
  *
  * @related_files:
- * - diagnostic.php (inclusion de ce fichier)
+ * - gutenberg-recovery.php (inclusion de ce fichier)
  * - src/ (classes à charger)
  *
  * @namespace_mapping:
- * - Company\Diagnostic\ → src/
- * - Company\Diagnostic\Core\ → src/Core/
- * - Company\Diagnostic\Features\ → src/Features/
+ * - Company\GutenbergRecovery\ → src/
+ * - Company\GutenbergRecovery\Core\ → src/Core/
+ * - Company\GutenbergRecovery\Features\ → src/Features/
  */
 
 // Fonction d'autoload PSR-4
 spl_autoload_register(function ($class) {
   // Préfixe du namespace
-  $prefix = 'Company\\Diagnostic\\';
+  $prefix = 'Company\\GutenbergRecovery\\';
 
   // Dossier de base pour les fichiers
   $base_dir = __DIR__ . '/src/';

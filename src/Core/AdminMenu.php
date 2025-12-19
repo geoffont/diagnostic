@@ -7,7 +7,7 @@
  * du plugin dans l'interface WordPress. Il configure le menu principal
  * et coordonne l'ajout des sous-menus par les différentes fonctionnalités.
  *
- * @package     Company\Diagnostic\Core
+ * @package     Company\GutenbergRecovery\Core
  * @author      Geoffroy Fontaine
  * @copyright   2025 Company
  * @license     GPL-2.0+
@@ -17,7 +17,7 @@
  * @modified    2025-09-11
  *
  * @responsibilities:
- * - Création du menu principal Diagnostic
+ * - Création du menu principal Gutenberg Recovery
  * - Configuration des permissions d'accès
  * - Définition des icônes et positions
  * - Coordination avec les sous-menus des fonctionnalités
@@ -37,9 +37,9 @@
  * - admin_menu (ajout des menus)
  */
 
-namespace Company\Diagnostic\Core;
+namespace Company\GutenbergRecovery\Core;
 
-use Company\Diagnostic\Common\Constants;
+use Company\GutenbergRecovery\Common\Constants;
 
 /**
  * Gestionnaire des menus d'administration
@@ -69,10 +69,10 @@ class AdminMenu
   {
     // Menu principal
     add_menu_page(
-      __('Diagnostic', Constants::TEXT_DOMAIN),
-      __('Diagnostic', Constants::TEXT_DOMAIN),
+      __('Gutenberg Recovery', Constants::TEXT_DOMAIN),
+      __('Gutenberg Recovery', Constants::TEXT_DOMAIN),
       Constants::CAP_MANAGE_DIAGNOSTIC,
-      'diagnostic',
+      'gutenberg-recovery',
       [self::class, 'dashboard_page'],
       'dashicons-chart-area',
       100
@@ -80,11 +80,11 @@ class AdminMenu
 
     // Sous-menu Dashboard
     add_submenu_page(
-      'diagnostic',
+      'gutenberg-recovery',
       __('Dashboard', Constants::TEXT_DOMAIN),
       __('Dashboard', Constants::TEXT_DOMAIN),
       Constants::CAP_MANAGE_DIAGNOSTIC,
-      'diagnostic',
+      'gutenberg-recovery',
       [self::class, 'dashboard_page']
     );
   }
@@ -99,8 +99,8 @@ class AdminMenu
     }
 
     echo '<div class="wrap">';
-    echo '<h1>' . esc_html__('Diagnostic Dashboard', Constants::TEXT_DOMAIN) . '</h1>';
-    echo '<p>' . esc_html__('Tableau de bord principal du plugin Diagnostic.', Constants::TEXT_DOMAIN) . '</p>';
+    echo '<h1>' . esc_html__('Gutenberg Recovery Dashboard', Constants::TEXT_DOMAIN) . '</h1>';
+    echo '<p>' . esc_html__('Tableau de bord principal du plugin Gutenberg Recovery.', Constants::TEXT_DOMAIN) . '</p>';
 
     // Afficher les features disponibles
     self::display_features_status();
@@ -113,7 +113,7 @@ class AdminMenu
    */
   private static function display_features_status(): void
   {
-    $plugin = \Company\Diagnostic\Plugin::instance();
+    $plugin = \Company\GutenbergRecovery\Plugin::instance();
     $features = $plugin->get_features();
 
     if (empty($features)) {
@@ -143,8 +143,8 @@ class AdminMenu
    */
   private static function get_feature_display_name(string $feature_class): string
   {
-    // Exemple: "Company\Diagnostic\Features\Scanner\Feature" -> "Scanner"
-    // Exemple: "Company\Diagnostic\Features\PostGenerator\Feature" -> "PostGenerator"
+    // Exemple: "Company\GutenbergRecovery\Features\Scanner\Feature" -> "Scanner"
+    // Exemple: "Company\GutenbergRecovery\Features\PostGenerator\Feature" -> "PostGenerator"
 
     $parts = explode('\\', $feature_class);
 

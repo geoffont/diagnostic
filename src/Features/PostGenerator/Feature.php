@@ -8,7 +8,7 @@
  * d'administration et sert de point d'entrée pour toute la fonctionnalité
  * de génération de posts de test.
  *
- * @package     Company\Diagnostic\Features\PostGenerator
+ * @package     Company\GutenbergRecovery\Features\PostGenerator
  * @author      Company Development Team
  * @copyright   2025 Company
  * @license     GPL-2.0+
@@ -41,10 +41,10 @@
  * - admin_post_diagnostic_post_generator (génération)
  */
 
-namespace Company\Diagnostic\Features\PostGenerator;
+namespace Company\GutenbergRecovery\Features\PostGenerator;
 
-use Company\Diagnostic\Common\Constants;
-use Company\Diagnostic\Features\PostGenerator\UI\Screens\PostGeneratorScreen;
+use Company\GutenbergRecovery\Common\Constants;
+use Company\GutenbergRecovery\Features\PostGenerator\UI\Screens\PostGeneratorScreen;
 
 /**
  * Fonctionnalité PostGenerator - Point d'entrée principal
@@ -81,7 +81,7 @@ class Feature
   public static function register_menu(): void
   {
     add_submenu_page(
-      'diagnostic',
+      'gutenberg-recovery',
       __('Générateur de Posts', Constants::TEXT_DOMAIN),
       __('Générateur de Posts', Constants::TEXT_DOMAIN),
       Constants::CAP_USE_POST_GENERATOR,
@@ -103,7 +103,7 @@ class Feature
     // CSS spécifique au générateur seulement (pas de JS pour l'instant)
     wp_enqueue_style(
       'diagnostic-post-generator',
-      DIAGNOSTIC_PLUGIN_URL . 'src/Features/PostGenerator/Assets/css/post-generator.css',
+      GUTENBERG_RECOVERY_PLUGIN_URL . 'src/Features/PostGenerator/Assets/css/post-generator.css',
       [],
       Constants::VERSION
     );
@@ -111,7 +111,7 @@ class Feature
     // JavaScript désactivé temporairement pour éviter les erreurs
     // wp_enqueue_script(
     //   'diagnostic-post-generator',
-    //   DIAGNOSTIC_PLUGIN_URL . 'src/Features/PostGenerator/Assets/js/post-generator.js',
+    //   GUTENBERG_RECOVERY_PLUGIN_URL . 'src/Features/PostGenerator/Assets/js/post-generator.js',
     //   ['jquery'],
     //   Constants::VERSION,
     //   true

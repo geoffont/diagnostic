@@ -7,7 +7,7 @@
  * Il gère la récupération automatique des blocs Gutenberg en mode recovery via
  * REST API et AJAX, coordonne les services de récupération et de validation.
  *
- * @package     Company\Diagnostic\Features\BlockRecovery
+ * @package     Company\GutenbergRecovery\Features\BlockRecovery
  * @author      Geoffroy Fontaine
  * @copyright   2025 Company
  * @license     GPL-2.0+
@@ -43,12 +43,12 @@
  * - Assets/js/gutenberg-recovery.js (récupération dans éditeur)
  */
 
-namespace Company\Diagnostic\Features\BlockRecovery;
+namespace Company\GutenbergRecovery\Features\BlockRecovery;
 
-use Company\Diagnostic\Common\Constants;
-use Company\Diagnostic\Features\BlockRecovery\UI\Screens\BlockRecoveryScreen;
-use Company\Diagnostic\Features\BlockRecovery\Core\BlockRecoveryService;
-use Company\Diagnostic\Features\BlockRecovery\Core\ValidationRepository;
+use Company\GutenbergRecovery\Common\Constants;
+use Company\GutenbergRecovery\Features\BlockRecovery\UI\Screens\BlockRecoveryScreen;
+use Company\GutenbergRecovery\Features\BlockRecovery\Core\BlockRecoveryService;
+use Company\GutenbergRecovery\Features\BlockRecovery\Core\ValidationRepository;
 
 class Feature
 {
@@ -91,7 +91,7 @@ class Feature
   public static function register_menu(): void
   {
     add_submenu_page(
-      'diagnostic',
+      'gutenberg-recovery',
       __('Récupération de Blocs', Constants::TEXT_DOMAIN),
       __('Récupération de Blocs', Constants::TEXT_DOMAIN),
       Constants::CAP_USE_SCANNER,
@@ -108,14 +108,14 @@ class Feature
 
     wp_enqueue_style(
       'diagnostic-block-recovery',
-      DIAGNOSTIC_PLUGIN_URL . 'src/Features/BlockRecovery/Assets/css/block-recovery.css',
+      GUTENBERG_RECOVERY_PLUGIN_URL . 'src/Features/BlockRecovery/Assets/css/block-recovery.css',
       [],
       Constants::VERSION
     );
 
     wp_enqueue_script(
       'diagnostic-block-recovery',
-      DIAGNOSTIC_PLUGIN_URL . 'src/Features/BlockRecovery/Assets/js/block-recovery-advanced.js',
+      GUTENBERG_RECOVERY_PLUGIN_URL . 'src/Features/BlockRecovery/Assets/js/block-recovery-advanced.js',
       ['jquery'],
       Constants::VERSION,
       true
@@ -137,7 +137,7 @@ class Feature
   {
     wp_enqueue_script(
       'diagnostic-gutenberg-recovery',
-      DIAGNOSTIC_PLUGIN_URL . 'src/Features/BlockRecovery/Assets/js/gutenberg-recovery.js',
+      GUTENBERG_RECOVERY_PLUGIN_URL . 'src/Features/BlockRecovery/Assets/js/gutenberg-recovery.js',
       ['wp-blocks', 'wp-element', 'wp-data', 'wp-notices'],
       Constants::VERSION,
       true

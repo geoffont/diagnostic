@@ -7,7 +7,7 @@
  * Gutenberg en mode recovery. Il affiche le tableau de récupération avec filtres,
  * statuts de validation, et modal de progression.
  *
- * @package     Company\Diagnostic\Features\BlockRecovery\UI\Screens
+ * @package     Company\GutenbergRecovery\Features\BlockRecovery\UI\Screens
  * @author      Geoffroy Fontaine
  * @copyright   2025 Company
  * @license     GPL-2.0+
@@ -38,9 +38,9 @@
  * - ../../Assets/css/block-recovery.css (styles)
  */
 
-namespace Company\Diagnostic\Features\BlockRecovery\UI\Screens;
+namespace Company\GutenbergRecovery\Features\BlockRecovery\UI\Screens;
 
-use Company\Diagnostic\Common\Constants;
+use Company\GutenbergRecovery\Common\Constants;
 
 class BlockRecoveryScreen
 {
@@ -51,7 +51,7 @@ class BlockRecoveryScreen
     $unique_blocks = $this->get_unique_block_names($recovery_blocks);
 
     // Utiliser ValidationRepository pour des statistiques précises
-    $validationRepo = new \Company\Diagnostic\Features\BlockRecovery\Core\ValidationRepository();
+    $validationRepo = new \Company\GutenbergRecovery\Features\BlockRecovery\Core\ValidationRepository();
 
     // Nettoyer automatiquement les validations pour les posts supprimés
     $validationRepo->cleanupDeletedPosts();
@@ -208,7 +208,7 @@ class BlockRecoveryScreen
           <tbody>
             <?php foreach ($recovery_blocks as $block): ?>
               <?php
-              $is_validated = \Company\Diagnostic\Features\BlockRecovery\Feature::is_post_validated(
+              $is_validated = \Company\GutenbergRecovery\Features\BlockRecovery\Feature::is_post_validated(
                 $block['post_id'],
                 $block['block_name']
               );

@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Constantes globales du plugin Diagnostic
+ * Constantes globales du plugin Gutenberg Recovery
  *
  * Ce fichier centralise toutes les constantes utilisées dans le plugin,
  * incluant les versions, noms, capacités, nonces et autres valeurs fixes.
  * Il sert de référentiel unique pour éviter la duplication de valeurs.
  *
- * @package     Company\Diagnostic\Common
+ * @package     Company\GutenbergRecovery\Common
  * @author      Geoffroy Fontaine
  * @copyright   2025 Company
  * @license     GPL-2.0+
@@ -32,11 +32,11 @@
  * - Plugin.php (initialisation)
  */
 
-namespace Company\Diagnostic\Common;
+namespace Company\GutenbergRecovery\Common;
 
 /**
- * Constantes globales du plugin Diagnostic
- * 
+ * Constantes globales du plugin Gutenberg Recovery
+ *
  * Classe finale contenant toutes les constantes utilisées dans le plugin.
  * Organisées par catégories : version, noms, capacités, nonces, etc.
  */
@@ -44,15 +44,15 @@ final class Constants
 {
   /**
    * Version du plugin
-   * 
+   *
    * @var string
    */
-  public const VERSION = '1.0.0';
+  public const VERSION = '2.0.0';
 
   /**
    * Text domain pour i18n
    */
-  public const TEXT_DOMAIN = 'diagnostic';
+  public const TEXT_DOMAIN = 'gutenberg-recovery';
 
   /**
    * Capabilities WordPress
@@ -64,15 +64,15 @@ final class Constants
   /**
    * Nonces de sécurité
    */
-  public const NONCE_SCANNER = 'diagnostic_scanner_nonce';
-  public const NONCE_POST_GENERATOR = 'diagnostic_post_generator_nonce';
+  public const NONCE_SCANNER = 'gutenberg_recovery_scanner_nonce';
+  public const NONCE_POST_GENERATOR = 'gutenberg_recovery_post_generator_nonce';
 
   /**
    * Hooks d'actions personnalisées
    */
-  public const ACTION_SCANNER_COMPLETE = 'diagnostic_scanner_complete';
-  public const ACTION_FEATURE_LOADED = 'diagnostic_feature_loaded';
-  public const ACTION_POST_GENERATOR_COMPLETE = 'diagnostic_post_generator_complete';
+  public const ACTION_SCANNER_COMPLETE = 'gutenberg_recovery_scanner_complete';
+  public const ACTION_FEATURE_LOADED = 'gutenberg_recovery_feature_loaded';
+  public const ACTION_POST_GENERATOR_COMPLETE = 'gutenberg_recovery_post_generator_complete';
 
   /**
    * Types de problèmes détectés par le scanner

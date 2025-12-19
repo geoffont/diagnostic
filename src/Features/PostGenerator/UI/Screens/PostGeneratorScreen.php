@@ -8,7 +8,7 @@
  * l'affichage des résultats. Il gère aussi les hooks d'administration et
  * la validation des données utilisateur.
  *
- * @package     Company\Diagnostic\Features\PostGenerator\UI\Screens
+ * @package     Company\GutenbergRecovery\Features\PostGenerator\UI\Screens
  * @author      Geoffroy Fontaine
  * @copyright   2025 Company
  * @license     GPL-2.0+
@@ -41,10 +41,10 @@
  * - diagnostic_post_generator (génération de posts)
  */
 
-namespace Company\Diagnostic\Features\PostGenerator\UI\Screens;
+namespace Company\GutenbergRecovery\Features\PostGenerator\UI\Screens;
 
-use Company\Diagnostic\Common\Constants;
-use Company\Diagnostic\Features\PostGenerator\Core\PostContentGenerator;
+use Company\GutenbergRecovery\Common\Constants;
+use Company\GutenbergRecovery\Features\PostGenerator\Core\PostContentGenerator;
 
 /**
  * Interface d'administration pour la génération de posts

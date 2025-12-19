@@ -5,14 +5,14 @@
  *
  * Analyse les blocs Gutenberg et détecte les problèmes de structure.
  *
- * @package     Company\Diagnostic\Features\Scanner\Core
+ * @package     Company\GutenbergRecovery\Features\Scanner\Core
  * @author      Geoffroy Fontaine
  * @copyright   2025 Company
  * @license     GPL-2.0+
  * @version     1.0.0
  */
 
-namespace Company\Diagnostic\Features\Scanner\Core;
+namespace Company\GutenbergRecovery\Features\Scanner\Core;
 
 use Exception;
 use Error;
@@ -33,7 +33,7 @@ class GutenbergValidator
    */
   public static function analyze_all_posts($options = [])
   {
-    \Company\Diagnostic\Features\Scanner\Core\WPLog::add('Début analyse_all_posts', '[GutenbergValidator]');
+    \Company\GutenbergRecovery\Features\Scanner\Core\WPLog::add('Début analyse_all_posts', '[GutenbergValidator]');
     $valid_post_types = BlockRegistry::get_valid_post_types();
 
     $defaults = [
@@ -67,7 +67,7 @@ class GutenbergValidator
     ];
 
     foreach ($options['post_types'] as $post_type) {
-      \Company\Diagnostic\Features\Scanner\Core\WPLog::add('Analyse du post_type: ' . $post_type, '[GutenbergValidator]');
+      \Company\GutenbergRecovery\Features\Scanner\Core\WPLog::add('Analyse du post_type: ' . $post_type, '[GutenbergValidator]');
       // Traitement par batch pour éviter les timeouts
       $batch_size = 50;
       $processed_posts = 0;
@@ -76,7 +76,7 @@ class GutenbergValidator
       $max_execution_time = 45; // 45 secondes max
 
       do {
-        \Company\Diagnostic\Features\Scanner\Core\WPLog::add('Batch offset: ' . $offset, '[GutenbergValidator]');
+        \Company\GutenbergRecovery\Features\Scanner\Core\WPLog::add('Batch offset: ' . $offset, '[GutenbergValidator]');
         // Protection contre timeout
         if (time() - $start_time > $max_execution_time) {
           break 2; // Sortir des deux boucles

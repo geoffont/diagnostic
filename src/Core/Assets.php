@@ -7,7 +7,7 @@
  * Il gère les styles et scripts partagés, les dépendances globales et
  * l'enregistrement conditionnel des ressources selon les pages d'administration.
  *
- * @package     Company\Diagnostic\Core
+ * @package     Company\GutenbergRecovery\Core
  * @author      Geoffroy Fontaine
  * @copyright   2025 Company
  * @license     GPL-2.0+
@@ -37,9 +37,9 @@
  * - admin_enqueue_scripts (chargement assets)
  */
 
-namespace Company\Diagnostic\Core;
+namespace Company\GutenbergRecovery\Core;
 
-use Company\Diagnostic\Common\Constants;
+use Company\GutenbergRecovery\Common\Constants;
 
 /**
  * Gestionnaire global des assets
@@ -79,7 +79,7 @@ class Assets
     // CSS global du plugin
     wp_enqueue_style(
       'diagnostic-admin',
-      DIAGNOSTIC_PLUGIN_URL . 'assets/css/admin.css',
+      GUTENBERG_RECOVERY_PLUGIN_URL . 'assets/css/admin.css',
       [],
       Constants::VERSION
     );
@@ -87,7 +87,7 @@ class Assets
     // JS global du plugin
     wp_enqueue_script(
       'diagnostic-admin',
-      DIAGNOSTIC_PLUGIN_URL . 'assets/js/admin.js',
+      GUTENBERG_RECOVERY_PLUGIN_URL . 'assets/js/admin.js',
       ['jquery'],
       Constants::VERSION,
       true
@@ -112,7 +112,7 @@ class Assets
    */
   public static function get_asset_url(string $path): string
   {
-    return DIAGNOSTIC_PLUGIN_URL . ltrim($path, '/');
+    return GUTENBERG_RECOVERY_PLUGIN_URL . ltrim($path, '/');
   }
 
   /**
@@ -120,7 +120,7 @@ class Assets
    */
   public static function get_asset_path(string $path): string
   {
-    return DIAGNOSTIC_PLUGIN_PATH . ltrim($path, '/');
+    return GUTENBERG_RECOVERY_PLUGIN_PATH . ltrim($path, '/');
   }
 
   /**

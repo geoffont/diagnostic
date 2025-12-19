@@ -8,7 +8,7 @@
  * avec différents types de blocs, médias et structures pour tester
  * les fonctionnalités du site et du plugin de diagnostic.
  *
- * @package     Company\Diagnostic\Features\PostGenerator\Core
+ * @package     Company\GutenbergRecovery\Features\PostGenerator\Core
  * @author      Geoffroy Fontaine
  * @copyright   2025 Company
  * @license     GPL-2.0+
@@ -42,9 +42,9 @@
  * - Métadonnées et taxonomies
  */
 
-namespace Company\Diagnostic\Features\PostGenerator\Core;
+namespace Company\GutenbergRecovery\Features\PostGenerator\Core;
 
-use Company\Diagnostic\Common\Constants;
+use Company\GutenbergRecovery\Common\Constants;
 
 /**
  * Générateur de contenu pour posts de test

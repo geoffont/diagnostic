@@ -7,7 +7,7 @@
  * Il gère l'enregistrement des menus, le chargement des assets, les hooks AJAX
  * et sert de point d'entrée principal pour toute la fonctionnalité Scanner.
  *
- * @package     Company\Diagnostic\Features\Scanner
+ * @package     Company\GutenbergRecovery\Features\Scanner
  * @author      Geoffroy Fontaine
  * @copyright   2025 Company
  * @license     GPL-2.0+
@@ -37,10 +37,10 @@
  * - Assets/css/scanner-interface.css (styles)
  */
 
-namespace Company\Diagnostic\Features\Scanner;
+namespace Company\GutenbergRecovery\Features\Scanner;
 
-use Company\Diagnostic\Common\Constants;
-use Company\Diagnostic\Features\Scanner\UI\Screens\ScannerScreen;
+use Company\GutenbergRecovery\Common\Constants;
+use Company\GutenbergRecovery\Features\Scanner\UI\Screens\ScannerScreen;
 
 /**
  * Fonctionnalité Scanner - Point d'entrée principal
@@ -348,7 +348,7 @@ class Feature
   public static function register_menu(): void
   {
     add_submenu_page(
-      'diagnostic',
+      'gutenberg-recovery',
       __('Scanner Blocs', Constants::TEXT_DOMAIN),
       __('Scanner Blocs', Constants::TEXT_DOMAIN),
       Constants::CAP_USE_SCANNER,
@@ -358,7 +358,7 @@ class Feature
 
     // Ajouter une sous-page pour la gestion des sauvegardes
     add_submenu_page(
-      'diagnostic',
+      'gutenberg-recovery',
       __('Sauvegardes Scanner', Constants::TEXT_DOMAIN),
       __('Sauvegardes', Constants::TEXT_DOMAIN),
       Constants::CAP_USE_SCANNER,
@@ -379,7 +379,7 @@ class Feature
     if (isset($_GET['js_validation']) && $_GET['js_validation'] === '1') {
       wp_enqueue_script(
         'diagnostic-gutenberg-validation',
-        DIAGNOSTIC_PLUGIN_URL . 'src/Features/Scanner/Assets/js/gutenberg-validation.js',
+        GUTENBERG_RECOVERY_PLUGIN_URL . 'src/Features/Scanner/Assets/js/gutenberg-validation.js',
         [],
         Constants::VERSION . '.' . time(), // Timestamp pour forcer le rechargement
         true
@@ -400,7 +400,7 @@ class Feature
     // CSS spécifique au scanner
     wp_enqueue_style(
       'diagnostic-scanner',
-      DIAGNOSTIC_PLUGIN_URL . 'src/Features/Scanner/Assets/css/scanner-interface.css',
+      GUTENBERG_RECOVERY_PLUGIN_URL . 'src/Features/Scanner/Assets/css/scanner-interface.css',
       [],
       Constants::VERSION
     );
@@ -410,7 +410,7 @@ class Feature
     // Module Core : communication AJAX et données
     wp_enqueue_script(
       'diagnostic-scanner-core',
-      DIAGNOSTIC_PLUGIN_URL . 'src/Features/Scanner/Assets/js/scanner-core.js',
+      GUTENBERG_RECOVERY_PLUGIN_URL . 'src/Features/Scanner/Assets/js/scanner-core.js',
       ['jquery'],
       Constants::VERSION,
       true
@@ -419,7 +419,7 @@ class Feature
     // Module Pagination : gestion des pages et table HTML
     wp_enqueue_script(
       'diagnostic-scanner-pagination',
-      DIAGNOSTIC_PLUGIN_URL . 'src/Features/Scanner/Assets/js/scanner-pagination.js',
+      GUTENBERG_RECOVERY_PLUGIN_URL . 'src/Features/Scanner/Assets/js/scanner-pagination.js',
       ['diagnostic-scanner-core'],
       Constants::VERSION,
       true
@@ -428,7 +428,7 @@ class Feature
     // Module Filters : système de filtrage avancé
     wp_enqueue_script(
       'diagnostic-scanner-filters',
-      DIAGNOSTIC_PLUGIN_URL . 'src/Features/Scanner/Assets/js/scanner-filters.js',
+      GUTENBERG_RECOVERY_PLUGIN_URL . 'src/Features/Scanner/Assets/js/scanner-filters.js',
       ['diagnostic-scanner-core'],
       Constants::VERSION,
       true
@@ -437,7 +437,7 @@ class Feature
     // Module JS Validation : validation JavaScript via iframe (CHARGÉ EN PREMIER)
     wp_enqueue_script(
       'diagnostic-scanner-js-validation',
-      DIAGNOSTIC_PLUGIN_URL . 'src/Features/Scanner/Assets/js/scanner-js-validation.js',
+      GUTENBERG_RECOVERY_PLUGIN_URL . 'src/Features/Scanner/Assets/js/scanner-js-validation.js',
       ['jquery'],
       Constants::VERSION . '.' . time(), // Timestamp pour forcer le rechargement
       true
@@ -446,7 +446,7 @@ class Feature
     // Interface principale : orchestration des modules
     wp_enqueue_script(
       'diagnostic-scanner',
-      DIAGNOSTIC_PLUGIN_URL . 'src/Features/Scanner/Assets/js/scanner-interface.js',
+      GUTENBERG_RECOVERY_PLUGIN_URL . 'src/Features/Scanner/Assets/js/scanner-interface.js',
       ['diagnostic-scanner-core', 'diagnostic-scanner-pagination', 'diagnostic-scanner-filters', 'diagnostic-scanner-js-validation'],
       Constants::VERSION . '.' . time(), // Timestamp pour forcer le rechargement
       true

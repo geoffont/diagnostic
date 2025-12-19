@@ -8,7 +8,7 @@
  * dans différentes parties du plugin pour des tâches communes comme
  * la validation, le formatting et la manipulation de données.
  *
- * @package     Company\Diagnostic\Common
+ * @package     Company\GutenbergRecovery\Common
  * @author      Geoffroy Fontaine
  * @copyright   2025 Company
  * @license     GPL-2.0+
@@ -40,7 +40,7 @@
  * - Fonctions pures sans effets de bord
  */
 
-namespace Company\Diagnostic\Common;
+namespace Company\GutenbergRecovery\Common;
 
 /**
  * Fonctions utilitaires communes

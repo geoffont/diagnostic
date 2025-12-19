@@ -7,7 +7,7 @@
  * Il gère l'initialisation, le chargement des fonctionnalités et la coordination
  * entre les différents modules.
  *
- * @package     Company\Diagnostic
+ * @package     Company\GutenbergRecovery
  * @author      Geoffroy Fontaine
  * @copyright   2025 Company
  * @license     GPL-2.0+
@@ -38,14 +38,14 @@
  * - Features/Feature.php (fonctionnalités)
  */
 
-namespace Company\Diagnostic;
+namespace Company\GutenbergRecovery;
 
-use Company\Diagnostic\Common\Constants;
-use Company\Diagnostic\Core\AdminMenu;
-use Company\Diagnostic\Core\Assets;
-use Company\Diagnostic\Features\Scanner\Feature as ScannerFeature;
-use Company\Diagnostic\Features\PostGenerator\Feature as PostGeneratorFeature;
-use Company\Diagnostic\Features\BlockRecovery\Feature as BlockRecoveryFeature;
+use Company\GutenbergRecovery\Common\Constants;
+use Company\GutenbergRecovery\Core\AdminMenu;
+use Company\GutenbergRecovery\Core\Assets;
+use Company\GutenbergRecovery\Features\Scanner\Feature as ScannerFeature;
+use Company\GutenbergRecovery\Features\PostGenerator\Feature as PostGeneratorFeature;
+use Company\GutenbergRecovery\Features\BlockRecovery\Feature as BlockRecoveryFeature;
 
 /**
  * Classe principale du plugin Diagnostic
@@ -167,7 +167,7 @@ final class Plugin
     load_plugin_textdomain(
       Constants::TEXT_DOMAIN,
       false,
-      dirname(plugin_basename(DIAGNOSTIC_PLUGIN_PATH)) . '/languages'
+      dirname(plugin_basename(GUTENBERG_RECOVERY_PLUGIN_PATH)) . '/languages'
     );
   }
 

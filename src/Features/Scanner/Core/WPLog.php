@@ -1,6 +1,6 @@
 <?php
 
-namespace Company\Diagnostic\Features\Scanner\Core;
+namespace Company\GutenbergRecovery\Features\Scanner\Core;
 
 /**
  * Classe utilitaire pour la gestion des logs du Scanner
@@ -8,7 +8,7 @@ namespace Company\Diagnostic\Features\Scanner\Core;
  * Fournit un système de logging avec niveaux (ERROR, WARNING, INFO, DEBUG)
  * et un mode verbose pour activer/désactiver les logs non-critiques.
  *
- * @package     Company\Diagnostic\Features\Scanner\Core
+ * @package     Company\GutenbergRecovery\Features\Scanner\Core
  * @author      Geoffroy Fontaine
  * @copyright   2025 Company
  * @license     GPL-2.0+

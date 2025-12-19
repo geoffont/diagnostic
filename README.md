@@ -1,10 +1,10 @@
-# Diagnostic - Plugin WordPress
+# Gutenberg Recovery - Plugin WordPress
 
 Plugin WordPress complet de diagnostic et récupération de blocs Gutenberg.
 
 ## Description
 
-Diagnostic est un plugin WordPress professionnel qui offre des outils puissants pour analyser, diagnostiquer et récupérer les contenus Gutenberg. Il est conçu pour aider les administrateurs WordPress à maintenir l'intégrité de leurs contenus et à résoudre les problèmes liés aux blocs.
+Gutenberg Recovery est un plugin WordPress professionnel qui offre des outils puissants pour analyser, diagnostiquer et récupérer les contenus Gutenberg. Il est conçu pour aider les administrateurs WordPress à maintenir l'intégrité de leurs contenus et à résoudre les problèmes liés aux blocs.
 
 ## Fonctionnalités
 
@@ -37,10 +37,10 @@ Diagnostic est un plugin WordPress professionnel qui offre des outils puissants 
 
 1. Téléchargez ou clonez ce repository :
 ```bash
-git clone https://github.com/geoffont/diagnostic.git
+git clone https://github.com/geoffont/gutenberg-recovery.git
 ```
 
-2. Uploadez le dossier `diagnostic` dans `/wp-content/plugins/`
+2. Uploadez le dossier `gutenberg-recovery` dans `/wp-content/plugins/`
 
 3. Activez le plugin dans le menu "Extensions" de WordPress
 
@@ -55,7 +55,7 @@ git clone https://github.com/geoffont/diagnostic.git
 
 ### Scanner de Blocs
 
-1. Accédez à **Diagnostic > Scanner** dans le menu admin WordPress
+1. Accédez à **Gutenberg Recovery > Scanner** dans le menu admin WordPress
 2. Configurez les filtres (type de post, statut, dates)
 3. Lancez l'analyse
 4. Consultez les résultats avec détails des erreurs
@@ -63,7 +63,7 @@ git clone https://github.com/geoffont/diagnostic.git
 
 ### Récupération de Blocs
 
-1. Accédez à **Diagnostic > Récupération**
+1. Accédez à **Gutenberg Recovery > Récupération**
 2. Visualisez les posts nécessitant une récupération
 3. Options disponibles :
    - Récupération individuelle via l'éditeur
@@ -72,7 +72,7 @@ git clone https://github.com/geoffont/diagnostic.git
 
 ### Générateur de Posts
 
-1. Accédez à **Diagnostic > Générateur**
+1. Accédez à **Gutenberg Recovery > Générateur**
 2. Configurez :
    - Nombre de posts à générer
    - Type de contenu (post, page, etc.)
@@ -85,8 +85,8 @@ git clone https://github.com/geoffont/diagnostic.git
 Le plugin suit une architecture modulaire avec séparation claire des responsabilités :
 
 ```
-diagnostic/
-├── diagnostic.php              # Point d'entrée principal
+gutenberg-recovery/
+├── gutenberg-recovery.php     # Point d'entrée principal
 ├── autoload.php               # Autoloader PSR-4
 ├── src/
 │   ├── Plugin.php             # Orchestration (Singleton)
@@ -113,7 +113,7 @@ Consultez [ARCHITECTURE.md](ARCHITECTURE.md) pour plus de détails.
 Chaque feature est autonome et suit le même pattern :
 
 ```php
-Company\Diagnostic\Features\{FeatureName}\
+Company\GutenbergRecovery\Features\{FeatureName}\
   ├── Feature.php              # Point d'entrée
   ├── Core/                    # Services métier
   ├── UI/Screens/             # Écrans admin
@@ -163,7 +163,7 @@ Ce projet est sous licence privée. Tous droits réservés.
 ## Support
 
 Pour toute question ou problème :
-- Ouvrez une [issue](https://github.com/geoffont/diagnostic/issues)
+- Ouvrez une [issue](https://github.com/geoffont/gutenberg-recovery/issues)
 - Consultez la documentation du projet
 
 ---
